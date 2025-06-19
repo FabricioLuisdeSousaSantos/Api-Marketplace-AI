@@ -1,1 +1,1 @@
-# Django-Api-Marketplace-AI
+# Api-Marketplace-AI
