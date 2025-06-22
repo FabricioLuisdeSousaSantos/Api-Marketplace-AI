@@ -1,3 +1,25 @@
+import json
+
+def converterJsonParaLista(objetoJson):
+    objetoDict = json.load(objetoJson)
+    try:
+        frase = ""
+        for i, v in enumerate(objetoDict.items()):
+            frase = v[1]
+        return frase
+    except:
+        return "Algo deu errado"
+
+
+def recuperarIndice():
+    pass
+
+
+
+
+
+
+
 import nltk
 nltk.download('punkt_tab')
 nltk.download('stopwords')
