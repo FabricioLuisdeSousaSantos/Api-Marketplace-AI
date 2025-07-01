@@ -1,7 +1,12 @@
-import json
+import nltk
+nltk.download('punkt_tab')
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+import string
 
 def converterJsonParaLista(objetoJson):
-    objetoDict = json.load(objetoJson)
+    objetoDict = objetoJson
     try:
         frase = ""
         for i, v in enumerate(objetoDict.items()):
@@ -9,23 +14,6 @@ def converterJsonParaLista(objetoJson):
         return frase
     except:
         return "Algo deu errado"
-
-
-def recuperarIndice():
-    pass
-
-
-
-
-
-
-
-import nltk
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-import string
 
 def tratamentoDeTexto(pesquisa):
     pesquisa = pesquisa.lower()
