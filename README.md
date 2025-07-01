@@ -1,3 +1,4 @@
+Python version 3.13.1
 py -m pip list - PIP LIST
 pip install -r requirements.txt - INSTALL DEPEND.
 
