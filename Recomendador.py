@@ -1,14 +1,9 @@
 from sentence_transformers import CrossEncoder
 import numpy as np
 model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L6-v2")
+from BancoDeDados import Banco
 
-setencas = [
-    "Como aprender Python para iniciantes em 30 dias",
-    "Tutorial de JavaScript para criar sites interativos",
-    "Guia completo de Flask para desenvolvimento web",
-    "Introdução ao Java para programação backend",
-    "Dicas para melhorar suas habilidades em programação"
-]
+setencas = Banco("grupopesquisa", "ai_marktingplace").retornarSentencas();
 
 def predicao(pesquisa):
     pontuacao = model.predict([(pesquisa, s) for s in setencas])
