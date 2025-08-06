@@ -1,20 +1,21 @@
 from flask import Flask, request
-import TratamentoDoTexto
-import Recomendador
+from TextProcessing import TextProcessing
+from Recommender import Recommender
 
-app = Flask(__name__)
+app    = Flask(__name__)
+recomm = Recommender()
 
 @app.route('/')
 def home():
     return ''
 
-@app.route('/api/enviarPesquisas', methods=['POST'])
-def processarPesquisas():
-    dados = request.get_json()
-    frase = TratamentoDoTexto.converterJsonParaLista(dados)
-    fraseTratada  = TratamentoDoTexto.tratamentoDeTexto(frase)
-    recomendacao  = Recomendador.predicao(fraseTratada)
-    return recomendacao
+@app.route('/sendSearches', methods=['POST'])
+def process():
+    data               = request.get_json()
+    phase              = TextProcessing.convertJsonToArray(data)
+    processedSentence  = TextProcessing.textCleaning(phase)
+    recommendation     = recomm.predictWithModel(processedSentence)  
+    return recommendation
 
 app.run(debug=True)
 
